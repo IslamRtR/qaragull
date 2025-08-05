@@ -52,27 +52,27 @@ api.interceptors.response.use(
 export const authAPI = {
   register: (fullName, email, password) => {
     console.log("📝 Тіркелу сұранысы...")
-    return api.post("/auth/register", { fullName, email, password })
+    return api.post("/api/auth/register", { fullName, email, password })
   },
 
   login: (email, password) => {
     console.log("🔐 Кіру сұранысы...")
-    return api.post("/auth/login", { email, password })
+    return api.post("/api/auth/login", { email, password })
   },
 
   getProfile: () => {
     console.log("👤 Профиль сұранысы...")
-    return api.get("/auth/profile")
+    return api.get("/api/auth/profile")
   },
 
   updateProfile: (profileData) => {
     console.log("✏️ Профиль жаңарту...")
-    return api.put("/auth/profile", profileData)
+    return api.put("/api/auth/profile", profileData)
   },
 
   changePassword: (currentPassword, newPassword) => {
     console.log("🔒 Құпия сөз өзгерту...")
-    return api.put("/auth/change-password", { currentPassword, newPassword })
+    return api.put("/api/auth/change-password", { currentPassword, newPassword })
   },
 }
 
