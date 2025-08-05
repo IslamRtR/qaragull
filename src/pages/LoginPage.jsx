@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { Leaf, Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
+import axios from "axios"
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -29,14 +30,14 @@ const LoginPage = () => {
     setError("")
 
     try {
-      const result = await login(formData.email, formData.password)
-      if (result.success) {
-        navigate("/dashboard")
-      } else {
-        setError(result.error)
-      }
+      const result = await axios.post('https://qaragul-back.onrender.com/api/auth/login', formData)
+
+      localStorage.setItem('token', result.data.token)
+
+      alert("Кіру сәтті өтті!")
+      navigate("/")
     } catch (error) {
-      setError("Кіру кезінде қате орын алды")
+      setError(`Кіру кезінде қате орын алды ${error.message}`)
     } finally {
       setIsLoading(false)
     }
