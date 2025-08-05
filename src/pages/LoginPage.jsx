@@ -1,9 +1,8 @@
-"use client"
-
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { Leaf, Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
+import axios from "axios"  // Axios импортын қосыңыз
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -27,19 +26,6 @@ const LoginPage = () => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
-
-    // try {
-    //   const result = await axios.post('https://qaragul-back.onrender.com/api/auth/login', formData)
-    //   if (result.success) {
-    //     navigate("/dashboard")
-    //   } else {
-    //     setError(result.error)
-    //   }
-    // } catch (error) {
-    //   setError(`Кіру кезінде қате орын алды ${error.message}`)
-    // } finally {
-    //   setIsLoading(false)
-    // }
 
     try {
       const result = await axios.post('https://qaragul-back.onrender.com/api/auth/login', formData)
