@@ -35,7 +35,7 @@ const LoginPage = () => {
       localStorage.setItem('token', result.data.token)
 
       alert("Кіру сәтті өтті!")
-      navigate("/")
+      navigate("/dashboard")
     } catch (error) {
       setError(`Кіру кезінде қате орын алды ${error.message}`)
     } finally {
