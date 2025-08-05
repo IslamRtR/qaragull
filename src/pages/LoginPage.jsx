@@ -28,12 +28,25 @@ const LoginPage = () => {
     setIsLoading(true)
     setError("")
 
+    // try {
+    //   const result = await axios.post('https://qaragul-back.onrender.com/api/auth/login', formData)
+    //   if (result.success) {
+    //     navigate("/dashboard")
+    //   } else {
+    //     setError(result.error)
+    //   }
+    // } catch (error) {
+    //   setError(`Кіру кезінде қате орын алды ${error.message}`)
+    // } finally {
+    //   setIsLoading(false)
+    // }
+
     try {
       const result = await axios.post('https://qaragul-back.onrender.com/api/auth/login', formData)
-      if (result.success) {
+      if (result.data.success) {
         navigate("/dashboard")
       } else {
-        setError(result.error)
+        setError(result.data.error)
       }
     } catch (error) {
       setError(`Кіру кезінде қате орын алды ${error.message}`)
