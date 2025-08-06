@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_BASE_URL = "https://qaragul-back.onrender.com/"
+const API_BASE_URL = "https://qaragul-back.onrender.com/api"
 
 console.log("🔗 API Base URL:", API_BASE_URL)
 
