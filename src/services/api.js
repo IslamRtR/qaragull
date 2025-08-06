@@ -1,9 +1,9 @@
 import axios from "axios"
 
-// Base API configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://qaragul-back.onrender.com/api"
+const API_BASE_URL = "https://qaragul-back.onrender.com/"
 
 console.log("🔗 API Base URL:", API_BASE_URL)
+
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -52,27 +52,27 @@ api.interceptors.response.use(
 export const authAPI = {
   register: (fullName, email, password) => {
     console.log("📝 Тіркелу сұранысы...")
-    return api.post("/api/auth/register", { fullName, email, password })
+    return api.post("/auth/register", { fullName, email, password })
   },
 
   login: (email, password) => {
     console.log("🔐 Кіру сұранысы...")
-    return api.post("/api/auth/login", { email, password })
+    return api.post("/auth/login", { email, password })
   },
 
   getProfile: () => {
     console.log("👤 Профиль сұранысы...")
-    return api.get("/api/auth/profile")
+    return api.get("/auth/profile")
   },
 
   updateProfile: (profileData) => {
     console.log("✏️ Профиль жаңарту...")
-    return api.put("/api/auth/profile", profileData)
+    return api.put("/auth/profile", profileData)
   },
 
   changePassword: (currentPassword, newPassword) => {
     console.log("🔒 Құпия сөз өзгерту...")
-    return api.put("/api/auth/change-password", { currentPassword, newPassword })
+    return api.put("/auth/change-password", { currentPassword, newPassword })
   },
 }
 
